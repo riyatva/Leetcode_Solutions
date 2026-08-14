@@ -9,7 +9,10 @@ public:
 
           for(int j=0;j<n;j++){
             mp[s[j]]++;
-            max_freq = max(max_freq,mp[s[j]]);
+            max_freq = -1e9;
+            for(auto it: mp){
+                max_freq = max(max_freq,it.second);
+            }
             int window_length = j-i+1;
             int replacements = window_length - max_freq;
 
