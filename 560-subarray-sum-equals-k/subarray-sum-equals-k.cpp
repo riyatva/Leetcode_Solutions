@@ -16,3 +16,6 @@ public:
        return cnt ;
     }
 };
+
+
+// Since n = 10^4 na so 10^8 operations are allowed.
