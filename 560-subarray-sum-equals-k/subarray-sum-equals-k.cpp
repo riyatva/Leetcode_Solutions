@@ -1,24 +1,26 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        
-            int n = nums.size();
-            map<int,int>mp;
-            int left = 0;
-            int cnt = 0;
-            for(int i=0;i<n;i++){
-              left+=nums[i];
-              // Matlab ab tak ka sum = k toa cnt++ ho jaaygaa.
-              // Nahi toa check karo left - k = prefix pehle kabhi aa chuka hai kya ?
-              if(left == k ){
-                cnt++;
-              }
-              if(mp.find(left-k)!=mp.end()){
-                cnt+=mp[left-k];
-              }
-               mp[left]++;
-            }
-        return cnt;    
+
+       int n = nums.size();
+       // Ek map bana lo to look to the frequency of (sum-k)  at every index okay 
+       map<int,int>freq;
+       // Jahan calaculate karte karte sum = k aa gaya tab .
+       freq[0] = 1;
+       int sum = 0; 
+       int answ = 0 ;
+       for(int i=0;i<n;i++){
+        sum+=nums[i];
+        int ques = sum-k;
+        // Agar kabhi pehle sum-k aaya hota toa cnt++ kar sakte hain .
+        if(freq.find(ques)!=freq.end()){
+             answ+=freq[ques];
+          }
+        //storing the current calculated sum .
+        freq[sum]++;
+
+       }
+        return answ;           
     }
 };
 
