@@ -2,11 +2,11 @@ class Solution {
 public:
     int numSplits(string s) {
         int n = s.size();
-        map<char,int>suffix;
+        unordered_map<char,int>suffix;
         for(int i=0;i<n;i++){
             suffix[s[i]]++;
         }
-        map<char,int>prefix;
+        unordered_map<char,int>prefix;
         int cnt = 0;
         for(int j=0;j<n-1;j++){
            prefix[s[j]]++;
