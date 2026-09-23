@@ -8,7 +8,7 @@ public:
 
         stack<int>st;
         st.push(-1);  
-        map<int,int>mp;
+        unordered_map<int,int>mp;
 
         for(int i=n2-1;i>=0;i--){
            while(st.top()!=-1 && nums2[i] > st.top()){
